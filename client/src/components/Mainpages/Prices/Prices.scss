@@ -1,0 +1,47 @@
+.crypto-table {
+    border-collapse: separate;
+    border-spacing: 0 1em;
+    padding: 10px;
+    thead {
+        th {
+            color: rgba(0, 0, 0, 0.3);
+        }
+    }
+    tbody tr {
+        background: #fff;
+        -webkit-box-shadow: 0 1px 15px 1px rgba(62, 57, 107, 0.07);
+        box-shadow: 0 1px 15px 1px rgba(62, 57, 107, 0.07);
+        height: 50px;
+
+        td > * {
+            vertical-align: middle;
+        }
+        td:first-child {
+            -moz-border-radius: 10px 0 0 10px;
+            -webkit-border-radius: 10px 0 0 10px;
+        }
+        td:last-child {
+            -moz-border-radius: 0 10px 10px 0;
+            -webkit-border-radius: 0 10px 10px 0;
+        }
+        td img {
+            width: 25px;
+            height: 25px;
+        }
+    }
+}
+
+.card.crypto-gradient-card {
+    color: #fff;
+    border: 0;
+}
+
+.green {
+    color: green;
+}
+.red {
+    color: red;
+}
+.black {
+    color: black;
+}

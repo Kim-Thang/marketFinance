@@ -1,0 +1,13 @@
+.header {
+    &-active {  
+        background-color: #f39c12; 
+        color: #fff;
+        border-radius: 4px;
+        display: inline-block;
+        transition: all 0.25s ease-in-out;
+    }
+    &__link {
+        padding: 10px 20px;
+        color: #fff;
+    }
+}

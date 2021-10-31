@@ -1,0 +1,26 @@
+.form-label {
+    font-weight: 700;
+	padding-bottom: 6px;
+	line-height: 1.8rem;
+	font-size: 16px;
+}
+
+.form-control:focus {
+    border-color: #f39c12;
+    box-shadow: none;
+}
+.btn-submit {
+    margin-top: 8px;
+    padding: 10px 30px;
+    color: #fff;
+    background-color: #f39c12;
+    border-radius: 2px;
+    border: none;
+    transition: all 0.25s ease-in-out;
+}
+.btn-submit:focus {
+    outline: none;
+}
+.btn-submit:hover {
+    opacity: 0.8;
+}

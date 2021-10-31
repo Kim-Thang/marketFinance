@@ -1,0 +1,42 @@
+.footer {
+    padding: 20px 0;
+    background-color: #343a40;
+    &__title {
+        text-transform: uppercase;
+        font-size: 20px;
+        color: #f39c12;
+        margin-bottom: 10px;
+    }
+    &__item {
+        color: #fff;
+        padding: 4px 0;
+    }
+    &__item:hover {
+        color: #f39c12;
+        cursor: pointer;
+    }
+}
+.form-input {
+    height: 40px;
+    width: 250px;
+    padding: 22px 18px;
+    border: 1px solid #b3b3b3;
+    border-radius: 2px;
+    outline: none;
+}
+@media screen and (max-width: 768px) {
+    .footer {
+        text-align: center;
+        &__list {
+            margin-bottom: 10px;
+        }
+        &__title {
+            margin-bottom: 4px;
+        }
+    }
+    .form-input {
+        margin: 0 auto;
+        width: 300px;
+    }
+    
+}
