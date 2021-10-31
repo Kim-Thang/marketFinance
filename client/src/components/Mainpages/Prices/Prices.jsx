@@ -35,7 +35,7 @@ function Prices() {
                                 <tr>
                                     <td>{item.id}</td>
                                     <td>
-                                        <img src="https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-128.png" />
+                                        <img src="https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-128.png" alt="loi"/>
                                         <span class="text-warning">
                                             {" "}
                                             Bitcoin

@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./Footer.scss";
 function Footer() {
     return (
@@ -66,6 +67,17 @@ function Footer() {
                         </form>
                     </Col>
                 </Row>
+                <div className="footer__social">
+                    <Link>
+                        <i class="fab fa-facebook"></i>
+                    </Link>
+                    <Link>
+                        <i class="fab fa-twitter"></i>
+                    </Link>
+                    <Link>
+                        <i class="fab fa-skype"></i>
+                    </Link>
+                </div>
             </Container>
         </div>
     );
