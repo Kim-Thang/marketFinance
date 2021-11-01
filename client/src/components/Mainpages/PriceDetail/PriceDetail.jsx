@@ -22,7 +22,7 @@ function PriceDetail() {
         return item.id === parseInt(id)
     })
   
-
+    console.log(id)
     return (
         <div style={{paddingTop: "100px"}}>
             <h2>Detail</h2>

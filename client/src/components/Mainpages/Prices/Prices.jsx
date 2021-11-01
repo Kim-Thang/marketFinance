@@ -7,22 +7,26 @@ function Prices() {
     const [search, setSearch] = useState("");
 
     const history = useHistory();
-
     useEffect(() => {
         const socket = new WebSocket("ws://localhost:8000/");
 
         socket.onmessage = function (e) {
             var data = JSON.parse(e.data);
             setPrice(data);
+
         };
         return () => {
             socket.close();
         };
     }, []);
 
+    // console.log(a)
     const handleNextPage = (id) => {
         history.push(`/prices/${id}`);
     };
+
+    
+
     const handleOnChange = (e) => {
         setSearch(e.target.value);
     };
@@ -30,6 +34,7 @@ function Prices() {
     const filterCoin = price.filter((item) => {
         return item.cointype.toLowerCase().includes(search.toLowerCase());
     });
+
 
     return (
         <div style={{ paddingTop: "76px" }}>
@@ -77,7 +82,9 @@ function Prices() {
                                             </span>
                                         </td>
                                         <td>{item.cointype}</td>
-                                        <td>{item.value}</td>
+                                        {
+                                            item.status ? (<td className="green">{item.value}</td>) :  (<td className="red">{item.value}</td>)
+                                        }
                                     </tr>
                                 </tbody>
                             ))}
