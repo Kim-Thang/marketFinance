@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router"
 import SignIn from './Auth/SignIn'
 import SignUp from './Auth/SignUp'
 import Home from './Home/Home'
+import PriceDetail from './PriceDetail/PriceDetail'
 import Prices from './Prices/Prices'
 
 function Pages() {
@@ -12,6 +13,7 @@ function Pages() {
             <Route path='/signin' exact component={SignIn}></Route>
             <Route path='/signup' exact component={SignUp}></Route>
             <Route path='/prices' exact component={Prices}></Route>
+            <Route path='/prices/:id' exact component={PriceDetail}></Route>
         </Switch>
     )
 }

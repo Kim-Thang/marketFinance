@@ -7,6 +7,10 @@
             color: rgba(0, 0, 0, 0.3);
         }
     }
+    tbody tr:hover {
+        background-color: #eee;
+        cursor: pointer;
+    }
     tbody tr {
         background: #fff;
         -webkit-box-shadow: 0 1px 15px 1px rgba(62, 57, 107, 0.07);
@@ -17,12 +21,12 @@
             vertical-align: middle;
         }
         td:first-child {
-            -moz-border-radius: 10px 0 0 10px;
-            -webkit-border-radius: 10px 0 0 10px;
+            border-radius: 10px 0 0 10px;
+            border-radius: 10px 0 0 10px;
         }
         td:last-child {
-            -moz-border-radius: 0 10px 10px 0;
-            -webkit-border-radius: 0 10px 10px 0;
+            border-radius: 0 10px 10px 0;
+            border-radius: 0 10px 10px 0;
         }
         td img {
             width: 25px;
@@ -30,6 +34,18 @@
         }
     }
 }
+
+.prices {
+    padding: 100px 0;
+    &__search {
+        outline: none;
+        padding: 8px 10px;
+        border-radius: 4px;
+        border-color: #ccc;
+        margin-right: 10px;
+    }
+}
+
 
 .card.crypto-gradient-card {
     color: #fff;

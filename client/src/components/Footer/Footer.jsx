@@ -68,14 +68,14 @@ function Footer() {
                     </Col>
                 </Row>
                 <div className="footer__social">
-                    <Link>
-                        <i class="fab fa-facebook"></i>
+                    <Link to="/">
+                        <i className="fab fa-facebook"></i>
                     </Link>
-                    <Link>
-                        <i class="fab fa-twitter"></i>
+                    <Link to="/">
+                        <i className="fab fa-twitter"></i>
                     </Link>
-                    <Link>
-                        <i class="fab fa-skype"></i>
+                    <Link to="/">
+                        <i className="fab fa-skype"></i>
                     </Link>
                 </div>
             </Container>
