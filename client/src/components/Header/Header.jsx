@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./Header.scss";
 
 function Header() {
-    const headerMenu = ["prices","sign up", "sign in"];
+    const headerMenu = ["prices","sign in", "sign up"];
 
     return (
         <Navbar expand="lg" bg="dark" fixed="top" >

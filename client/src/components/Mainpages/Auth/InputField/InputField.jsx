@@ -8,10 +8,8 @@ function InputField(props) {
     const { errors, touched } = form;
     const showError = errors[name] && touched[name];
 
-    console.log(showError);
-
     return (
-        <Form.Group>
+        <Form.Group style={{marginBottom: "20px"}}>
             {label && <Form.Label htmlFor={name}>{label}</Form.Label>}
             <Form.Control
                 id={name}

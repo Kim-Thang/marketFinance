@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Formik, Form, FastField } from "formik";
 import InputField from "./InputField/InputField";
 import * as Yup from "yup";
-import './Auth.scss';
+import "./Auth.scss";
 
 function SignIn() {
     const initialValues = {
@@ -14,16 +14,9 @@ function SignIn() {
     };
 
     const validationSchema = Yup.object().shape({
-        fullname: Yup.string().required("This filded is required."),
-        email: Yup.string()
-            .trim()
-            .email("Email invalid")
-            .required("Please enter this field."),
+        email: Yup.string().trim().required("Please enter this field."),
         password: Yup.string()
             .min(6, "Please enter at least 6 characters.")
-            .required("Please enter this field."),
-        confirmpassword: Yup.string()
-            .oneOf([Yup.ref("password")], "Re-entered password is incorrect.")
             .required("Please enter this field."),
     });
 
@@ -33,6 +26,7 @@ function SignIn() {
                 <Container>
                     <Row>
                         <Col>
+                        <h2 className="auth__title">Login</h2>
                             <Formik
                                 initialValues={initialValues}
                                 validationSchema={validationSchema}
@@ -47,14 +41,6 @@ function SignIn() {
 
                                     return (
                                         <Form>
-                                            <FastField
-                                                name="fullname"
-                                                component={InputField}
-                                                type="text"
-                                                label="Full Name"
-                                                placeholder="DoKimThang"
-                                            />
-
                                             <FastField
                                                 name="email"
                                                 component={InputField}
@@ -71,19 +57,11 @@ function SignIn() {
                                                 placeholder="Enter password"
                                             />
 
-                                            <FastField
-                                                name="confirmpassword"
-                                                component={InputField}
-                                                type="password"
-                                                label="Confirm Password"
-                                                placeholder="Enter password again"
-                                            />
-
                                             <button
                                                 className="btn-submit"
                                                 type="submit"
                                             >
-                                                Submit
+                                                Login
                                             </button>
                                         </Form>
                                     );
