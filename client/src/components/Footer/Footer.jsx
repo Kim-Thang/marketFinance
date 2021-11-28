@@ -7,7 +7,7 @@ function Footer() {
         <div className="footer">
             <Container>
                 <Row>
-                    <Col lg={8}>
+                    <Col lg={8} md={6} sm={12}>
                         <Row>
                             <Col lg={4}>
                                 <h2 className="footer__title">about us</h2>
@@ -50,7 +50,7 @@ function Footer() {
                             </Col>
                         </Row>
                     </Col>
-                    <Col lg={4}>
+                    <Col lg={4} md={6} sm={12}>
                         <h2 className="footer__title">
                             subscribe to receive more infomation{" "}
                         </h2>

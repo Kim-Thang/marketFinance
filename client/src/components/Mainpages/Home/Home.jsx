@@ -7,7 +7,7 @@ function Home() {
             <div className="home__top">
                 <Container>
                     <Row>
-                        <Col lg={6} md={12}>
+                        <Col lg={6} md={12} sm={12}>
                             <div className="home__top-text">
                                 <h2>
                                     A New Money <span>Cryptocurrency</span>
@@ -31,7 +31,7 @@ function Home() {
                                 </p>
                             </div>
                         </Col>
-                        <Col lg={6} md={12}>
+                        <Col lg={6} md={12} sm={12}> 
                             <div className="home__top-image">
                                 <img
                                     src="http://html.kodesolution.live/f/cryptocoin/demo/images/about/2.png"

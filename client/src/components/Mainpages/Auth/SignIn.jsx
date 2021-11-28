@@ -1,51 +1,67 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import { Formik, Form, FastField } from "formik";
 import InputField from "./InputField/InputField";
 import * as Yup from "yup";
+import axios from "axios";
 import "./Auth.scss";
 
 function SignIn() {
+    const [status, setStatus] = useState({ err: "", success: "" });
+    const { err, success } = status;
     const initialValues = {
-        fullname: "",
-        email: "",
+        username: "",
         password: "",
-        confirmpassword: "",
     };
 
     const validationSchema = Yup.object().shape({
-        email: Yup.string().trim().required("Please enter this field."),
+        username: Yup.string().trim().required("Please enter this field."),
         password: Yup.string()
             .min(6, "Please enter at least 6 characters.")
             .required("Please enter this field."),
     });
+
+    const handleLogin = async (values) => {
+        try {
+            const res = await axios.post('http://localhost:8000/users/login', { ...values });
+            setStatus({ err: "", success: "Login successfully !" });
+            localStorage.setItem("firstLogin", true);
+            window.location.href = "/";
+        } catch (error) {
+            setStatus({ err: error.response.data.error_message , success: "" });
+        }
+    };
 
     return (
         <div style={{ paddingTop: "76px" }}>
             <div className="signin">
                 <Container>
                     <Row>
-                        <Col>
-                        <h2 className="auth__title">Login</h2>
+                        <Col lg={12} md={12} sm={12}>
+                            <h2 className="auth__title">Login</h2>
+                            {success && (
+                                <Alert variant="success">Login successfully !</Alert>
+                            )}
+                            {err && (
+                                <Alert variant="danger">
+                                   Password or User is incorrect
+                                </Alert>
+                            )}
                             <Formik
                                 initialValues={initialValues}
                                 validationSchema={validationSchema}
-                                onSubmit={(value) =>
-                                    console.log("value", value)
-                                }
+                                onSubmit={(values) => handleLogin(values)}
                             >
                                 {(formikProps) => {
                                     const { values, errors, touched } =
                                         formikProps;
-                                    console.log({ values, errors, touched });
-
                                     return (
                                         <Form>
                                             <FastField
-                                                name="email"
+                                                name="username"
                                                 component={InputField}
                                                 type="text"
-                                                label="Email"
+                                                label="User Name"
                                                 placeholder="dkt@gmail.com"
                                             />
 

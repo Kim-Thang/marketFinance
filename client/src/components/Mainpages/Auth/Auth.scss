@@ -14,3 +14,9 @@
     line-height: 1.6;
     font-weight: 700;
 }
+@media screen and (max-width: 768px) {
+    .signin,
+    .signup {
+        width: 400px;
+    }
+}
