@@ -2,7 +2,7 @@ import React from "react";
 import { Form } from "react-bootstrap";
 import './InputField.scss'
 function InputField(props) {
-    const { field, form, type, label, placeholder, disabled } = props;
+    const { field, form, type, label, placeholder, disabled, defaultValue } = props;
     const { name, value, onChange, onBlur } = field;
 
     const { errors, touched } = form;
@@ -21,6 +21,7 @@ function InputField(props) {
                 disable={disabled}
                 placeholder={placeholder}
 
+                defaultValue={defaultValue}
                 isInvalid = {showError}
             />
 

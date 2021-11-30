@@ -1,0 +1,85 @@
+.profile {
+    margin: 100px 0;
+    &__menu {
+        & button {
+            margin: 6px 0;
+            & i {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    &__account {
+        width: 600px;
+        background-color: #dadada;
+        border-radius: 4px;
+        padding: 20px;
+    }
+    &__group {
+        padding: 8px;
+        & label {
+            flex: 1;
+            font-weight: 700;
+            line-height: 1.8rem;    
+            font-size: 16px;
+        }
+        & input {
+            flex: 3;
+            padding: 0.375rem 0.75rem;
+            border: 1px solid #b3b3b3;
+            border-radius: 0.25rem;
+            outline: none;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            display: block; 
+        }
+    }
+}
+
+.tabs {
+    border: none ;
+    outline: none;
+    padding: 10px;
+    width: 250px;
+    color: #fff;
+    background-color: #f39c12;
+    border-radius: 2px;
+    border: none;
+    transition: all 0.25s ease-in-out;
+    opacity: 0.7;
+    &:focus {
+        outline: none;
+    }
+}
+
+.active {
+	display: block;
+}
+.active-tabs {
+    opacity: 1;
+}
+
+.tabs-content {
+	display: none;
+}
+
+
+@media screen and (max-width: 992px) {
+    .profile__account {
+        margin: 0 auto;
+    }
+    .profile__menu {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .profile__menu button {
+        margin-right: 10px ;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile__account {
+        width: 450px;
+    }
+}

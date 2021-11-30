@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, InputGroup, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Prices.scss";
@@ -23,21 +23,15 @@ function Prices() {
         };
     }, []);
 
-    // useEffect(() => {
-    //     const fetchData = async() => {
-    //         const res = await axios.get('http://localhost:8000/coins/info')
-    //         setImage(res.data)
-    //     }
-    //     fetchData();
-    // }, [])
+    useEffect(() => {
+        const fetchData = async() => {
+            const res = await axios.get('http://localhost:8000/coins/info')
+            setImage(res.data)
+        }
+        fetchData();
+    }, [])
 
-    // const imgs = []
-    // image.forEach(item => {
-    //     imgs.push(item.icon)
-    // })
-
-
-    
+     
     const handleNextPage = (id) => {
         history.push(`/prices/${id}`);
     };
@@ -50,7 +44,14 @@ function Prices() {
         return item.typeCoin.toLowerCase().includes(search.toLowerCase());
     });
 
- 
+
+    filterCoin.forEach((item, index) => {
+        image.forEach((img) => {
+            if(index + 1 === img.ranked)
+            item.image = img.icon
+        })
+    })
+
     return (
         <div style={{ paddingTop: "76px" }}>
             <div className="prices">
@@ -85,16 +86,12 @@ function Prices() {
                             {filterCoin.map((item, index) => (
                                 <tbody key={index}>
                                     <tr onClick={() => handleNextPage(item.id)}>
-                                        <td>{item.id}</td>
+                                        <td>{index + 1}</td>
                                         <td>
-                                            {/* <img
-                                                src="https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-128.png"
+                                            <img
+                                                src={`http://localhost:8000${item.image}`}
                                                 alt="loi"
-                                            /> */}
-                                            <span className="text-warning">
-                                                {" "}
-                                                Bitcoin
-                                            </span>
+                                            />
                                         </td>
                                         <td>{item.typeCoin}</td>
                                         {

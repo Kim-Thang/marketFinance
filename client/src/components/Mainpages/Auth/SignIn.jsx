@@ -21,12 +21,15 @@ function SignIn() {
             .required("Please enter this field."),
     });
 
-    const handleLogin = async (values) => {
+    const handleLogin = async (values, actions) => {
         try {
             const res = await axios.post('http://localhost:8000/users/login', { ...values });
             setStatus({ err: "", success: "Login successfully !" });
             localStorage.setItem("firstLogin", true);
+            localStorage.setItem("userToken", res.data.access_token)
+        
             window.location.href = "/";
+            actions.resetForm()
         } catch (error) {
             setStatus({ err: error.response.data.error_message , success: "" });
         }
@@ -50,7 +53,7 @@ function SignIn() {
                             <Formik
                                 initialValues={initialValues}
                                 validationSchema={validationSchema}
-                                onSubmit={(values) => handleLogin(values)}
+                                onSubmit={(values, actions) => handleLogin(values, actions)}
                             >
                                 {(formikProps) => {
                                     const { values, errors, touched } =

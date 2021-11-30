@@ -27,3 +27,17 @@
     }
    
 }
+.notify {
+    padding: 20px 10px;
+    background-color: #cecece;
+    border-radius: 4px;
+}
+.mb-5 {
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 992px) {
+    .notify {
+        margin-top: 20px;
+    }
+}

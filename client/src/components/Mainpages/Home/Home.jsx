@@ -54,41 +54,41 @@ function Home() {
                                 <div className="home__middle-list">
                                     <ul>
                                         <li>
-                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <i className="fas fa-chevron-circle-right"></i>
                                             <span>
                                                 Faster, cheaper bank transfers
                                             </span>
                                         </li>
                                         <li>
-                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <i className="fas fa-chevron-circle-right"></i>
                                             <span>
                                                 A boost to global remittances
                                             </span>
                                         </li>
                                         <li>
-                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <i className="fas fa-chevron-circle-right"></i>
                                             <span>Safe money for the poor</span>
                                         </li>
                                         <li>
-                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <i className="fas fa-chevron-circle-right"></i>
                                             <span>
                                                 Unleashing the potential of
                                                 e-commerce
                                             </span>
                                         </li>
                                         <li>
-                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <i className="fas fa-chevron-circle-right"></i>
                                             <span>
                                                 Programmable money and smart
                                                 contracts
                                             </span>
                                         </li>
                                         <li>
-                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <i className="fas fa-chevron-circle-right"></i>
                                             <span>A boost to e-commerce</span>
                                         </li>
                                         <li>
-                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <i className="fas fa-chevron-circle-right"></i>
                                             <span>
                                                 More money available for lics
                                             </span>
