@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
 import ChartPrice from "../../Pages/ChartPrice";
-import { Col, Container, Row } from "react-bootstrap";
+import { Alert, Col, Container, Row } from "react-bootstrap";
 import InputField from "../Auth/InputField/InputField";
 import { Formik, Form, FastField } from "formik";
 import * as Yup from "yup";
@@ -11,11 +11,11 @@ import "./PriceDetail.scss";
 
 function PriceDetail() {
     const [historicData, setHistoricData] = useState([]);
-    const [infoCoin, setInfoCoin] = useState([]);
+    const [status, setStatus] = useState({ err: "", success: "" });
+    const { err, success } = status;
+    // const [infoCoin, setInfoCoin] = useState([]);
     const [days, setDays] = useState("day");
     const { id } = useParams();
-
-    
 
     const isLogged = localStorage.getItem("firstLogin");
     const token = localStorage.getItem("userToken");
@@ -31,31 +31,27 @@ function PriceDetail() {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await axios.get(
-                `http://localhost:8000/coins/info`
-            );
-            setInfoCoin(res.data);
-        };
-        fetchData();
-    }, []);
-
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const res = await axios.get(
+    //             `http://localhost:8000/coins/info`
+    //         );
+    //         setInfoCoin(res.data);
+    //     };
+    //     fetchData();
+    // }, []);
 
     const initialValues = {
         min_threshold: "",
         max_threshold: "",
-        typecoin: ""
-       
+        typecoin: id,
     };
     const validationSchema = Yup.object().shape({
         min_threshold: Yup.string().required("This filded is required."),
         max_threshold: Yup.string().required("This filded is required."),
         typecoin: Yup.string().required("This filded is required."),
-
     });
-   
-    
+
     const data = {
         labels: historicData.map((item) => {
             let date = new Date(item.time);
@@ -100,16 +96,21 @@ function PriceDetail() {
     };
 
     const handleSubcription = async (values, actions) => {
-        console.log(values)
+        console.log(values);
         try {
-            const res = await axios.post('http://localhost:8000/users/notification', values, {
-                headers: { Authorization: tokenBearer },
-            })
-            console.log(res)
-        } catch(error) {
-            console.log(error)
+            const res = await axios.post(
+                "http://localhost:8000/users/notification",
+                values,
+                {
+                    headers: { Authorization: tokenBearer },
+                }
+            );
+            console.log(res);
+            setStatus({ err: "", success: res.data.message });
+        } catch (error) {
+            setStatus({ err: "", success: "" });
         }
-    }
+    };
     return (
         <div className="price__detail" style={{ paddingTop: "100px" }}>
             {isLogged ? (
@@ -144,12 +145,15 @@ function PriceDetail() {
                             <Line data={data} />
                         </Col>
                         <Col lg={3} md={12} sm={12}>
+                            {success && (
+                                <Alert variant="success">{success}</Alert>
+                            )}
                             <div className="notify">
                                 <Formik
                                     initialValues={initialValues}
                                     validationSchema={validationSchema}
                                     onSubmit={(values, actions) =>
-                                        handleSubcription(values, actions) 
+                                        handleSubcription(values, actions)
                                     }
                                 >
                                     {(formikProps) => {
@@ -164,7 +168,6 @@ function PriceDetail() {
                                                     label="Min Threshold"
                                                     placeholder=""
                                                 />
-
                                                 <FastField
                                                     name="max_threshold"
                                                     component={InputField}
@@ -178,7 +181,6 @@ function PriceDetail() {
                                                     type="text"
                                                     label="Type Coin"
                                                     placeholder=""
-                                                    // defaultValue="1231231"
                                                 />
                                                 <button
                                                     className="btn-submit"

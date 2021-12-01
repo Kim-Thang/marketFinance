@@ -30,11 +30,7 @@ function SignUp() {
     const handleSubmit = async (values, actions) => {
         try {
             const res = await axios.post('http://localhost:8000/users/register', { ...values });
-
-            // set localstorage de kiem tra ng dung
-            localStorage.setItem("firstLogin", true);
             setStatus({ err: "", success: res.data.message });
-          
             window.location.href = "/signin";
             actions.resetForm()
         } catch (error) {
