@@ -1,31 +1,14 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+
+import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import Sidebar from "../Sidebar/Sidebar";
 import "./Header.scss";
 
 function Header() {
-    const [user, setUser] = useState([]);
 
     const isLogged = localStorage.getItem("firstLogin");
-    const token = localStorage.getItem("userToken");
-    const tokenBearer = `Bearer ${token}`;
 
-    const handleLogout = () => {
-            localStorage.removeItem('firstLogin');
-			localStorage.removeItem('userToken');
-			window.location.href = '/';
-    }
-
-    useEffect(() => {
-        const getInfo = async () => {
-            const res = await axios.get("http://localhost:8000/users/detail", {
-                headers: { Authorization: tokenBearer },
-            });
-            setUser(res.data);
-        };
-        getInfo();
-    }, []);
 
     return (
         <Navbar expand="lg" bg="dark" fixed="top">
@@ -51,24 +34,7 @@ function Header() {
                             <p className="header__link">PRICES</p>
                         </NavLink>
                         {isLogged ? (
-                            <div className="info__user d-flex align-items-center justify-content-center"> 
-                                <Link to="#" className="info__user-avatar ">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png" alt="/" />
-                                    &nbsp;
-                                    <span className="info__user-name">
-                                        <span>{user.username}</span>
-                                        <i className="fas fa-angle-down"></i>
-                                    </span>
-                                </Link>
-                                <ul className="info__user-dropdown">
-                                    <li>
-                                        <Link to="/detail" style={{color: '#fff'}}>Infomation</Link>
-                                    </li>
-                                    <li onClick={handleLogout}>
-                                        Log out
-                                    </li>
-                                </ul>
-                            </div>
+                          <Sidebar />
                         ) : (
                             <>
                                 <NavLink

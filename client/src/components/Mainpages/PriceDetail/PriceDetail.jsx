@@ -13,7 +13,6 @@ function PriceDetail() {
     const [historicData, setHistoricData] = useState([]);
     const [status, setStatus] = useState({ err: "", success: "" });
     const { err, success } = status;
-    // const [infoCoin, setInfoCoin] = useState([]);
     const [days, setDays] = useState("day");
     const { id } = useParams();
 
@@ -30,16 +29,6 @@ function PriceDetail() {
         };
         fetchData();
     }, []);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const res = await axios.get(
-    //             `http://localhost:8000/coins/info`
-    //         );
-    //         setInfoCoin(res.data);
-    //     };
-    //     fetchData();
-    // }, []);
 
     const initialValues = {
         min_threshold: "",
@@ -85,6 +74,23 @@ function PriceDetail() {
         },
     };
 
+    const handleFavorite = async () => {
+        const value = { coin: id };
+        try {
+            const res = await axios.post(
+                "http://localhost:8000/users/favorite",
+                value,
+                {
+                    headers: { Authorization: tokenBearer },
+                }
+            );
+            alert('Add favoriter successfully')
+        } catch (error) {
+   
+            alert('Add favoriter failed')
+        }
+    };
+
     const handleDay = () => {
         setDays("day");
     };
@@ -96,7 +102,6 @@ function PriceDetail() {
     };
 
     const handleSubcription = async (values, actions) => {
-        console.log(values);
         try {
             const res = await axios.post(
                 "http://localhost:8000/users/notification",
@@ -105,7 +110,6 @@ function PriceDetail() {
                     headers: { Authorization: tokenBearer },
                 }
             );
-            console.log(res);
             setStatus({ err: "", success: res.data.message });
         } catch (error) {
             setStatus({ err: "", success: "" });
@@ -119,7 +123,26 @@ function PriceDetail() {
                         <div className="price__detail-title">
                             <h2>{`Biểu đồ giá`}</h2>
                         </div>
+
                         <div>
+                            {/* {success && (
+                                <Alert variant="success">
+                                   <Alert variant="success">{success}</Alert>
+                                </Alert>
+                            )}
+                            {err && (
+                                <Alert variant="danger">
+                                   <Alert variant="danger">{err}</Alert>
+                             
+                                </Alert>
+                            )} */}
+                            <button
+                                className="price__detail-like"
+                                onClick={handleFavorite}
+                            >
+                                Like
+                                <i className="fas fa-heart"></i>
+                            </button>
                             <button
                                 className="price__detail-btn"
                                 onClick={handleDay}

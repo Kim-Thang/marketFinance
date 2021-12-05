@@ -9,6 +9,19 @@
     &-title {
         font-size: 10px;
     }
+    &-like {
+        color: #ccc;
+        border-radius: 5px;
+        padding: 10px 20px;
+        border: none;
+    }
+    &-like:hover {
+        color: red;
+        border: 1px solid  red;
+    }
+    &-like:focus {
+        outline: none;
+    }
     &-btn {
         border: 1px solid gold;
         border-radius: 5px;
