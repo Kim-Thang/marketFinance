@@ -111,6 +111,7 @@ function PriceDetail() {
                 }
             );
             setStatus({ err: "", success: res.data.message });
+            actions.resetForm()
         } catch (error) {
             setStatus({ err: "", success: "" });
         }

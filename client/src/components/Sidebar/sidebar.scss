@@ -87,6 +87,11 @@
     color: #fff;
     font-size: 25px;
     cursor: pointer;
+
+    &:hover {
+        color: #eebc1d;
+        transition: all 0.25s linear;
+    }
 }
 
 @media screen and (max-width: 992px) {

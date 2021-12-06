@@ -1,14 +1,12 @@
-
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import Notify from "../Notify/Notify";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Header.scss";
 
 function Header() {
-
     const isLogged = localStorage.getItem("firstLogin");
-
 
     return (
         <Navbar expand="lg" bg="dark" fixed="top">
@@ -34,7 +32,10 @@ function Header() {
                             <p className="header__link">PRICES</p>
                         </NavLink>
                         {isLogged ? (
-                          <Sidebar />
+                            <>
+                                <Notify />
+                                <Sidebar />
+                            </>
                         ) : (
                             <>
                                 <NavLink

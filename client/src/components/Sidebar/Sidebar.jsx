@@ -39,7 +39,7 @@ function Sidebar() {
             setFavorite(res.data);
         };
         getFavorite();
-    });
+    }, []);
 
     useEffect(() => {
         const getInfo = async () => {
