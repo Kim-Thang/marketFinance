@@ -26,12 +26,12 @@ function Notify() {
     };
     return (
         <div className="notification">
-            <i class="fas fa-bell"></i>
+            <i className="fas fa-bell"></i>
             <div className="notification__content">
                 <h3>Notifications</h3>
                 <div className="notification__content-detail">
-                    {notify.map((item) => (
-                        <div class="notification__content-detail-price">
+                    {notify.map((item, index) => (
+                        <div className="notification__content-detail-price" key={index}>
                             <span style={{color: "red"}}>{item.typeCoin}</span>
                             <p>
                                 Min_threshold:{" "}

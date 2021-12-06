@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
+import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./sidebar.scss";
 
@@ -24,6 +25,9 @@ function Sidebar() {
     const [favorite, setFavorite] = useState([]);
     const [user, setUser] = useState([]);
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const [status, setStatus] = useState({ err: "", success: "" });
+    const { err, success } = status;
 
     const token = localStorage.getItem("userToken");
     const tokenBearer = `Bearer ${token}`;
@@ -57,20 +61,17 @@ function Sidebar() {
         window.location.href = "/";
     };
     const handleDeleteFavorite = async (id) => {
-
-        console.log(id)
-        // const _id = id.toString();
-        // const value = { coin: _id };
-        // try {
-        //     const res = await axios.delete(
-        //         "http://localhost:8000/users/favorite",
-        //         value,
-        //         { headers: { Authorization: tokenBearer } }
-        //     );
-        //     console.log(res);
-        // } catch (error) {
-        //     console.log(error.message);
-        // }
+        try {
+            if (window.confirm("Are you sure want to delete this?")) {
+                const res = await axios.delete(
+                    `http://localhost:8000/users/favorite/${id}`,
+                    { headers: { Authorization: tokenBearer } }
+                );
+                setStatus({ err: "", success: res.data.message });
+            }
+        } catch (error) {
+            setStatus({ err: "Delete failed", success: "" });
+        }
     };
     const handleShow = () => {
         setMenuOpen(!menuOpen);
@@ -88,6 +89,7 @@ function Sidebar() {
                     <span>{user.username}</span>
                     <i className="fas fa-times" onClick={handleShow}></i>
                 </div>
+                {success && <Alert variant="success">{success}</Alert>}
                 <div className="slidebar__user-watch">
                     <span>Watchlist</span>
                     {favorite.map((item, index) => (
