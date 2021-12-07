@@ -18,7 +18,7 @@ function Notify() {
             setNotify(res.data);
         };
         getNotify();
-    }, []);
+    });
 
     const handleFormat = (date) => {
         let newDate = new Date(date);
@@ -32,7 +32,7 @@ function Notify() {
                 <div className="notification__content-detail">
                     {notify.map((item, index) => (
                         <div className="notification__content-detail-price" key={index}>
-                            <span style={{color: "red"}}>{item.typeCoin}</span>
+                            <span className={item.isNotify ? 'green' : 'red'}>{item.typeCoin}</span>
                             <p>
                                 Min_threshold:{" "}
                                 {Number(item.min_threshold).toFixed(2)}

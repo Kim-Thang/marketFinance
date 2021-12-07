@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import { Alert } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./sidebar.scss";
 
 let useClickOutSide = (handler) => {
@@ -31,6 +31,7 @@ function Sidebar() {
 
     const token = localStorage.getItem("userToken");
     const tokenBearer = `Bearer ${token}`;
+    const history = useHistory();
 
     useEffect(() => {
         const getFavorite = async () => {
@@ -43,7 +44,7 @@ function Sidebar() {
             setFavorite(res.data);
         };
         getFavorite();
-    }, []);
+    });
 
     useEffect(() => {
         const getInfo = async () => {
@@ -76,6 +77,11 @@ function Sidebar() {
     const handleShow = () => {
         setMenuOpen(!menuOpen);
     };
+        
+    const handleNextPage = (id) => {
+        history.push(`/prices/${id}`);
+    };
+
 
     let domNode = useClickOutSide(() => {
         setMenuOpen(false);
@@ -94,7 +100,7 @@ function Sidebar() {
                     <span>Watchlist</span>
                     {favorite.map((item, index) => (
                         <div className="slidebar__user-coin" key={index}>
-                            <span>{item.coin.name}</span>
+                            <span onClick={() => handleNextPage(item.coin.pk)}>{item.coin.name}</span>
                             <span>
                                 <i
                                     className="fas fa-trash"
