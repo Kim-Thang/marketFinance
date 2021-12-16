@@ -24,8 +24,8 @@ let useClickOutSide = (handler) => {
 function Sidebar() {
     const [favorite, setFavorite] = useState([]);
     const [user, setUser] = useState([]);
-    const [menuOpen, setMenuOpen] = useState(false);
-
+    const [menuOpen, setMenuOpen] = useState(false);   
+    const [coinID, setCoinID] = useState();
     const [status, setStatus] = useState({ err: "", success: "" });
     const { err, success } = status;
 
@@ -78,10 +78,10 @@ function Sidebar() {
         setMenuOpen(!menuOpen);
     };
         
-    const handleNextPage = (id) => {
-        history.push(`/prices/${id}`);
-    };
-
+    // const handleNextPage = (id) => {
+    //     setCoinID(id)
+    //     history.p(`/prices/${coinID}`);
+    // };
 
     let domNode = useClickOutSide(() => {
         setMenuOpen(false);
@@ -100,7 +100,7 @@ function Sidebar() {
                     <span>Watchlist</span>
                     {favorite.map((item, index) => (
                         <div className="slidebar__user-coin" key={index}>
-                            <span onClick={() => handleNextPage(item.coin.pk)}>{item.coin.name}</span>
+                            <span>{item.coin.name}</span>
                             <span>
                                 <i
                                     className="fas fa-trash"

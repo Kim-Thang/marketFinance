@@ -16,6 +16,8 @@ function PriceDetail() {
     const [days, setDays] = useState("day");
     const { id } = useParams();
 
+    // console.log(days)
+
     const isLogged = localStorage.getItem("firstLogin");
     const token = localStorage.getItem("userToken");
     const tokenBearer = `Bearer ${token}`;
@@ -28,7 +30,8 @@ function PriceDetail() {
             setHistoricData(res.data);
         };
         fetchData();
-    }, []);
+    }, [days]);
+
 
     const initialValues = {
         min_threshold: "",

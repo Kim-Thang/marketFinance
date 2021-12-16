@@ -18,8 +18,8 @@ function Notify() {
             setNotify(res.data);
         };
         getNotify();
-    });
-
+    }, []);
+   
     const handleFormat = (date) => {
         let newDate = new Date(date);
         return newDate.toLocaleDateString("en-US");
